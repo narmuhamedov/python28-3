@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+
+{% for i in  blog %}
+
+{{ i.title }}<br>
+<img src="{{i.image.url}}" alt="" width="350" height="300"><br>
+{{i.description}}<br>
+{{i.created_at}}
+<hr>
+
+{% endfor %}
+
+</body>
+</html>
