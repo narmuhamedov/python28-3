@@ -1,0 +1,50 @@
+{% include 'meeting/header.html' %}
+ {% for i in object_list %}
+
+<div class="container">
+    <div class="post">
+
+        <div class="post-header">
+            <h1>{{i.name}}</h1>
+            <div class="post-meta">
+                <time datetime="2019-04-01">{{i.number_phone}}</time>
+            </div>
+        </div>
+        <div class="post-image">
+            <img src="{{i.image.url}}">
+        </div>
+
+        <div class="post-content">
+            <p>
+                {{i.description}}
+            </p>
+
+        </div>
+    </div>
+</div>
+<center>
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        hr{
+            border: none;
+            color: red;
+            background-color: red;
+            height: 112px;
+        }
+
+        body{
+            background-color: red;
+        }
+
+    </style>
+    <button type="button" class="btn btn-warning"><a href="/person_detail/{{i.id}}">Узнать подробнее</a></button>
+    <button type="button" class="btn btn-success"><a href="/add-person/">Добавить анкету</a></button>
+</center>
+<hr>
+ {% endfor %}
+
+{% include 'meeting/footer.html' %}

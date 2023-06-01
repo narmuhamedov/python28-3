@@ -1,0 +1,47 @@
+{% include 'meeting/header.html' %}
+<div class="container">
+    <div class="post">
+        <div class="post-header">
+            <div class="post-image">
+                <img src="{{object.image.url}}">
+            </div>
+            <h1>{{object.name}}</h1>
+        </div>
+        <div class="post-content">
+            <p>{{object.about}}</p>
+          <p>{{object.age}}</p>
+          <p>{{object.number_phone}}</p>
+           <h6><b>Были ли вы в отношениях? {{object.history_love}}</b></h6>
+          <p><b>Цель знакомства? {{object.purpose_of_dating}}</b></p>
+        </div>
+       <button><a href="/person_detail/{{object.id}}/delete/">Удалить</a></button>
+      <button><a href="/person_detail/{{object.id}}/update/">Редактировать</a></button>
+    </div>
+</div>
+
+<center>
+<table>
+<tr>
+  <th>Дата создания</th>
+  <th>Отзыв</th>
+  </tr>
+  {% for i in object.comment_object.all %}
+ <tr>
+  <td>{{i.created_at}}</td>
+  <td>{{i.description}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+
+
+
+
+
+
+  <h1></h1>
+  <p></p>
+  <br><br><br>
+
+
+{% include 'meeting/footer.html' %}
