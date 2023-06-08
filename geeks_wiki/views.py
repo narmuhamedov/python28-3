@@ -3,9 +3,10 @@ from django.shortcuts import render, get_object_or_404
 from . import models, forms
 from django.views import generic
 
-#не полная информация
+
+# не полная информация
 class PersonView(generic.ListView):
-    template_name = 'meeting/meeting.html'
+    template_name = "meeting/meeting.html"
     queryset = models.Meeting.objects.all()
 
     def get_queryset(self):
@@ -17,24 +18,27 @@ class PersonView(generic.ListView):
 #     return render(request, 'meeting/meeting.html', {'persons': persons})
 #
 
-#детальная информация
+
+# детальная информация
 class PersonDetailView(generic.DetailView):
-    template_name = 'meeting/meeting_detail.html'
+    template_name = "meeting/meeting_detail.html"
 
     def get_object(self, **kwargs):
-        person_id = self.kwargs.get('id')
+        person_id = self.kwargs.get("id")
         return get_object_or_404(models.Meeting, id=person_id)
+
+
 # def person_detail_view(request, id):
 #     person_id = get_object_or_404(models.Meeting, id=id)
 #     return render(request, 'meeting/meeting_detail.html', {'person_id': person_id})
 
 
-#создание анкеты #POST GET DELETE PUT
+# создание анкеты #POST GET DELETE PUT
 class CreatePersonView(generic.CreateView):
-    template_name = 'crud/create_person.html'
+    template_name = "crud/create_person.html"
     form_class = forms.MeetingForm
     queryset = models.Meeting.objects.all()
-    success_url = '/'
+    success_url = "/"
 
     def form_valid(self, form):
         print(form.cleaned_data)
@@ -52,14 +56,16 @@ class CreatePersonView(generic.CreateView):
 #         form = forms.MeetingForm()
 #     return render(request, "crud/create_person.html", {"form": form})
 
-#удаление анкеты
+
+# удаление анкеты
 class DeletePersonView(generic.DeleteView):
-    template_name = 'crud/confirm_delete.html'
-    success_url = '/'
+    template_name = "crud/confirm_delete.html"
+    success_url = "/"
 
     def get_object(self, **kwargs):
-        person_id = self.kwargs.get('id')
+        person_id = self.kwargs.get("id")
         return get_object_or_404(models.Meeting, id=person_id)
+
 
 # def delete_person_view(request, id):
 #     person_id = get_object_or_404(models.Meeting, id=id)
@@ -67,18 +73,19 @@ class DeletePersonView(generic.DeleteView):
 #     return HttpResponse("Анкета удалена")
 
 
-#Обновление
+# Обновление
 class UpdatePersonView(generic.UpdateView):
-    template_name = 'crud/update_person.html'
+    template_name = "crud/update_person.html"
     form_class = forms.MeetingForm
-    success_url = '/'
+    success_url = "/"
 
     def get_object(self, **kwargs):
-        person_id = self.kwargs.get('id')
+        person_id = self.kwargs.get("id")
         return get_object_or_404(models.Meeting, id=person_id)
 
     def form_valid(self, form):
         return super(UpdatePersonView, self).form_valid(form=form)
+
 
 # def update_person_view(request, id):
 #     person_id = get_object_or_404(models.Meeting, id=id)
@@ -95,8 +102,8 @@ class UpdatePersonView(generic.UpdateView):
 #     }
 #     return render(request, "crud/update_person.html", context)
 class Search(generic.ListView):
-    template_name = 'meeting/meeting.html'
-    context_object_name = 'person'
+    template_name = "meeting/meeting.html"
+    context_object_name = "person"
     paginate_by = 5
 
     def get_queryset(self):
@@ -104,6 +111,5 @@ class Search(generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['q'] = self.request.GET.get('q')
+        context["q"] = self.request.GET.get("q")
         return context
-

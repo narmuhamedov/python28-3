@@ -35,14 +35,14 @@
             Выпадающий список
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Действие</a></li>
-            <li><a class="dropdown-item" href="#">Другое действие</a></li>
+            <li><a class="dropdown-item" href="/start_parsing/">Спарсить фильмы</a></li>
+            <li><a class="dropdown-item" href="/film_parser/">Список спарсенных фильмов</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Отключенная</a>
+          <a class="nav-link" href="#">Вход</a>
         </li>
       </ul>
       <form action="{% url 'search' %}" method="GET" class="d-flex" role="search">

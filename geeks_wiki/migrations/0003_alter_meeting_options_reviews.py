@@ -5,23 +5,37 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('geeks_wiki', '0002_alter_meeting_about_alter_meeting_video'),
+        ("geeks_wiki", "0002_alter_meeting_about_alter_meeting_video"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='meeting',
-            options={'verbose_name': 'Анкету', 'verbose_name_plural': 'Анкеты'},
+            name="meeting",
+            options={"verbose_name": "Анкету", "verbose_name_plural": "Анкеты"},
         ),
         migrations.CreateModel(
-            name='Reviews',
+            name="Reviews",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.TextField(verbose_name='ваш отзыв')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('name_reviews', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comment_object', to='geeks_wiki.meeting')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.TextField(verbose_name="ваш отзыв")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "name_reviews",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comment_object",
+                        to="geeks_wiki.meeting",
+                    ),
+                ),
             ],
         ),
     ]

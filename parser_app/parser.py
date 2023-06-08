@@ -45,9 +45,9 @@ def parser():
             html = get_html(f"http://www.manascinema.com/movies", params=page)
             manas_film1.extend(get_data(html.text))
         return manas_film1
-        #print(f'\n{manas_film1}\n')
+        # print(f'\n{manas_film1}\n')
     else:
         raise Exception("Parse Error......")
 
 
-#parser()
+# parser()
